@@ -484,3 +484,7 @@ template {
   min-height: 100vh;
   display: flex;
 }
+
+* {
+  box-sizing: border-box;
+}

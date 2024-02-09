@@ -1,6 +1,7 @@
-import { Button, Layout, App as Wrapper } from "antd";
+import { Layout, App as Wrapper } from "antd";
 import { useGetGenresQuery } from "./redux/api";
 import styles from "./App.module.scss";
+import { Header } from "./components";
 
 function App() {
   // const { data, isError } = useGetGenresQuery();
@@ -8,7 +9,7 @@ function App() {
   return (
     <Wrapper className={styles.wrapper}>
       <Layout className={styles.layout}>
-        <Button>Меню</Button>
+        <Header />
       </Layout>
     </Wrapper>
   );

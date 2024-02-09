@@ -11,6 +11,7 @@ import { ThemeConfig } from "antd/lib/index";
 const themeConfig: ThemeConfig = {
   token: {
     colorPrimary: "#0f0f10",
+    colorBgBase: "#0f0f10",
     colorInfo: "#0f0f10",
     wireframe: false,
   },
@@ -22,6 +23,14 @@ const themeConfig: ThemeConfig = {
       defaultHoverColor: "#ececec",
       defaultActiveBg: "#292929",
       defaultActiveColor: "#ececec",
+      defaultBorderColor: "#333",
+      borderRadius: 12,
+      borderRadiusLG: 12,
+      borderRadiusSM: 12,
+      borderRadiusXS: 12,
+    },
+    Layout: {
+      headerBg: "#0f0f10",
     },
   },
   algorithm: theme.darkAlgorithm,
