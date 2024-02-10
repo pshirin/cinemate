@@ -488,3 +488,22 @@ template {
 * {
   box-sizing: border-box;
 }
+
+* {
+  scrollbar-color: #1d1d1d #fddd2d;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  cursor: pointer;
+  height: 0.25rem;
+  width: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  background: #fddd2d;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0.75rem;
+}

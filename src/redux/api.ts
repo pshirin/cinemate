@@ -15,7 +15,12 @@ export const api = createApi({
         url: "/v1/movie/possible-values-by-field?field=genres.name",
       }),
     }),
+    getAll: build.query<unknown, void>({
+      query: (arg) => ({
+        url: "/v1.4/movie",
+      }),
+    }),
   }),
 });
 
-export const { useGetGenresQuery } = api;
+export const { useGetGenresQuery, useGetAllQuery } = api;
