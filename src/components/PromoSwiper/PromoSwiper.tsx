@@ -34,14 +34,11 @@ export const PromoSwiper = () => {
       draggable
       swipeToSlide
       className={styles.carousel}
-      // autoplay
-      lazyLoad="ondemand"
-      focusOnSelect={false}
+      autoplay
       adaptiveHeight
-      accessibility={false}
-      arrows
       pauseOnHover
       centerMode
+      pauseOnDotsHover
       style={{ width: "100%", maxWidth: 1100, margin: "auto" }}
     >
       {data?.docs.map((e) => (
