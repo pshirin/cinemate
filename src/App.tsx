@@ -9,13 +9,7 @@ const App = () => {
     <Wrapper className={styles.wrapper}>
       <Layout className={styles.layout}>
         <Header />
-        <Content
-          style={{
-            width: "100%",
-            maxWidth: "75vw",
-            margin: "auto",
-          }}
-        >
+        <Content className={styles.main}>
           <Outlet />
         </Content>
       </Layout>

@@ -44,11 +44,9 @@ const themeConfig: ThemeConfig = {
   /* <App /> */
 }
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ConfigProvider locale={ru_RU} theme={themeConfig}>
-      <Provider store={store}>
-        <Routes />
-      </Provider>
-    </ConfigProvider>
-  </React.StrictMode>
+  <ConfigProvider locale={ru_RU} theme={themeConfig}>
+    <Provider store={store}>
+      <Routes />
+    </Provider>
+  </ConfigProvider>
 );

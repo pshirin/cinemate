@@ -5,7 +5,6 @@ import styles from "./Header.module.scss";
 const { Header: Wrapper } = Layout;
 
 export const Header = () => {
-
   return (
     <Wrapper className={styles.header}>
       <Logo />
