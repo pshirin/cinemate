@@ -1,10 +1,50 @@
-import { CardFilm, PromoSwiper, Skeletons } from "../../components";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { CardFilm, Skeletons } from "../../components";
 import { CARD_WIDTH } from "../../constants/constants";
-import { data } from "../../data";
+import { useGetAllQuery } from "../../redux/api";
+import { ApiFilm } from "../../redux/types";
 
 export const Main = () => {
+  const filmsContainerRef = useRef<HTMLDivElement>(null);
+  const [page, setPage] = useState(1);
+  const { data, isSuccess } = useGetAllQuery({ page, limit: 50 });
+  const [filmsPull, setFilmsPull] = useState<ApiFilm[] | []>([]);
+
+  const callbackObserver: IntersectionObserverCallback = useCallback(
+    ([entrie]) => {
+      if (isSuccess) {
+        setPage((p) => p + 1);
+      }
+    },
+    [isSuccess]
+  );
+
+  const options: IntersectionObserverInit = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.01,
+  };
+
+  useEffect(() => {
+    const scrollTriggerElement = filmsContainerRef.current?.querySelector(
+      "#first-pagination-scroll-element"
+    );
+    const observer = new IntersectionObserver(callbackObserver, options);
+    if (scrollTriggerElement) observer.observe(scrollTriggerElement);
+    return () => {
+      if (scrollTriggerElement) observer.unobserve(scrollTriggerElement);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (data?.docs) {
+      setFilmsPull((p) => [...p, ...data.docs]);
+    }
+  }, [data]);
+
   return (
     <div
+      ref={filmsContainerRef}
       style={{
         paddingTop: 30,
         display: "flex",
@@ -12,7 +52,6 @@ export const Main = () => {
         flexDirection: "column",
       }}
     >
-      <PromoSwiper />
       <ul
         style={{
           display: "grid",
@@ -24,8 +63,11 @@ export const Main = () => {
           alignItems: "center",
         }}
       >
-        {data?.docs.map((e) => (
-          <li key={e.id} style={{ display: "block", minHeight: "100%" }}>
+        {filmsPull?.map((e, i) => (
+          <li
+            key={`${e.id} ${i}`}
+            style={{ display: "block", minHeight: "100%" }}
+          >
             <CardFilm
               src={e.poster.previewUrl}
               rating={e.rating}

@@ -1,12 +1,13 @@
 import { Skeleton } from "antd";
 
-export const Skeletons = () => {
+export const Skeletons: React.FC = () => {
   const count = 20;
   const arr = Array.from({ length: count }, (_, i) => i + 1);
 
-  return arr.map((e) => (
+  return arr.map((e, i) => (
     <li
       key={e}
+      id={!i ? "first-pagination-scroll-element" : undefined}
       style={{
         display: "flex",
         flexDirection: "column",
